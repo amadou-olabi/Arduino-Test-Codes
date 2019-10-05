@@ -25,7 +25,7 @@ void setup() {
 void loop() {
   // Clears the trigPin
   digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
+  delayMicroseconds(5);
 
   // Sets the trigPin on HIGH state for 10 micro seconds
   digitalWrite(trigPin, HIGH);
@@ -35,10 +35,17 @@ void loop() {
   // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
 
+  pinMode(echoPin, INPUT);
   // Calculating the distance
   distance = duration * 0.034 / 2;
+  //distance = duration / 58.2;
+  //distance = (duration / 2) / 29.1;
 
   // Prints the distance on the Serial Monitor
+  Serial.print("Duration: ");
+  Serial.println(duration);
   Serial.print("Distance: ");
   Serial.println(distance);
+
+  delay(250);
 }
